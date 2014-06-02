@@ -21,7 +21,7 @@ class icinga::server::config {
 
   # Collect any exported host definitions
   Icinga::Host <<||>> {
-    require => Class['icinga::server::config::puppet'],
+    require => Class['icinga::server::puppet'],
   }
 
 }
