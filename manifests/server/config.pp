@@ -16,6 +16,15 @@ class icinga::server::config {
     source => 'puppet:///modules/icinga/idoutils.cfg',
   }
 
+  # Configure the collection daemon
+  file { '/etc/icinga/icinga.cfg':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template('icinga/icinga.cfg.erb'),
+  }
+
   # Install the puppet naginator workarounds
   contain icinga::server::puppet
 

@@ -25,6 +25,18 @@ The base installation is simply done via
 
     include icinga::server
 
+It can be configured via puppet data bindings
+
+    icinga::server::allow_empty_hostgroup_assignment: 1
+    icinga::server::use_timezone: 'Europe/London'
+
+Or explicitly
+
+    class { 'icinga::server':
+      allow_empty_hostgroup_assignment => 1,
+      use_timezone                     => 'Europe/London',
+    }
+
 You can then define resources to populate the configuration files
 
     icinga::timeperiod { 'timeperiod_24x7':
