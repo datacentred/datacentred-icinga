@@ -11,4 +11,7 @@ class icinga::server::service {
     ensure => running,
   }
 
+  # Unbeknownst to me, ido2db must (re)start before icinga
+  Service['ido2db'] -> Service['icinga']
+
 }
