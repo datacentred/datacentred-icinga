@@ -32,7 +32,7 @@ class icinga::server::config {
   contain icinga::server::puppet
 
   # Collect any exported host definitions
-  Icinga::Host <<||>> {
+  Icinga::Host <<| tag == $icinga::server::icinga_host_environment |>> {
     require => Class['icinga::server::puppet'],
   }
 

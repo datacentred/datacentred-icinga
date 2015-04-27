@@ -8,6 +8,12 @@
 # to icinga.cfg so consult the icinga documentation for their
 # significance
 #
+# [*icinga_host_environment*]
+#   When the server automatically collects exported host resources
+#   it matches against an environment tag thus supporting multiple
+#   icinga test environments in a single puppet infrastructure.
+#   Defaults to puppet current environment
+#
 # === Examples
 #
 # ==== Explicit Parameterization
@@ -154,6 +160,7 @@ class icinga::server (
   $debug_file = '/var/log/icinga/icinga.debug',
   $max_debug_file_size = 100000000,
   $event_profiling_enabled = 0,
+  $icinga_host_environment = $::environment,
 ) {
 
   $regex_int = '^-?\d+$'
@@ -280,6 +287,7 @@ class icinga::server (
   validate_absolute_path($debug_file)
   validate_re("${max_debug_file_size}", $regex_int)
   validate_re("${event_profiling_enabled}", $regex_int)
+  validate_string($icinga_host_environment)
 
   contain icinga::server::install
   contain icinga::server::config
