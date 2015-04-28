@@ -13,9 +13,9 @@ class icinga::server::config {
   # Install the icinga ido2db module
   file { '/etc/icinga/modules/idoutils.cfg':
     ensure => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
     source => 'puppet:///modules/icinga/idoutils.cfg',
   }
 
