@@ -4,8 +4,6 @@
 #
 class icinga::client {
 
-  package { 'nagios-plugins':
-    ensure => present,
-  }
+  ensure_packages('nagios-plugins')
 
 }
